@@ -14,7 +14,7 @@ class Patient(models.Model):
         verbose_name_plural = 'Pazienti'
 
     def __str__(self):
-        return ' '.join((self.cognome, self.nome, self.d_nascita))
+        return ' '.join((self.cognome, self.nome, str(self.d_nascita)))
 
     centro = models.CharField(max_length=100)
 
