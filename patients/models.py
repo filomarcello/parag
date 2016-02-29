@@ -11,7 +11,8 @@ OBBLIGATORIO = " Campo obbligatorio"
 class Patient(models.Model):
 
     class Meta:
-        verbose_name_plural = 'Pazienti'
+        verbose_name = 'paziente'
+        verbose_name_plural = 'pazienti'
 
     def __str__(self):
         return ' '.join((self.cognome, self.nome, str(self.d_nascita)))
