@@ -12,6 +12,7 @@ class StaffAdmin(admin.ModelAdmin):
     # list_filter = ['d_nascita',]
 
     search_fields = ['cognome', 'd_nascita',]
+    list_display = ('cognome', 'nome', 'sesso', 'd_nascita')
 
 admin.site.register(Patient, StaffAdmin)
 
