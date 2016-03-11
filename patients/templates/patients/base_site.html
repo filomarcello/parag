@@ -1,0 +1,23 @@
+{% extends 'patients/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Paraganglioma database{% endblock %}
+
+{% block stylesheet %}{% static "styles.css" %}{% endblock %}
+
+{% block header %}Parag{% endblock %}
+
+<!-- TODO correct user nickname -->
+{% block welcome_message %}Benvenuto, {{ user.nickname }} {% endblock %}
+
+{% block admin_url %}{% endblock %}
+
+<!-- TODO navigation links -->
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+
+	&copy; 2016 Webmaster <a href="mailto:marcello.filopanti@gmail.com">Marcello Filopanti</a>
+
+{% endblock %}

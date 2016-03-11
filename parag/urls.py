@@ -19,7 +19,7 @@ from django.contrib import admin
 from parag.admin import centersadmin
 
 urlpatterns = [
-    url(r'^', include('patients.urls')),
+    url(r'^main/', include('patients.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^centersadmin/', centersadmin.urls),
 ]
