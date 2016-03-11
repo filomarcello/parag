@@ -51,12 +51,14 @@ class StaffAdmin(admin.ModelAdmin):
 
     search_fields = ['cognome', 'd_nascita',]
     list_display = ('cognome', 'nome', 'sesso', 'd_nascita')
+    readonly_fields = ('centro',)
 
 
 class CentersAdmin(admin.ModelAdmin):
 
     search_fields = ['cognome', 'd_nascita',]
-    list_display = ('cognome', 'nome', 'sesso',)
+    list_display = ('cognome', 'nome', 'sesso', 'd_nascita',)
+    readonly_fields = ('centro',)
 
     fieldsets = [
         ('Anagrafica',  {'fields': ['centro', 'cognome', 'nome', 'sesso',
