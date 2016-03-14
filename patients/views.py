@@ -6,36 +6,19 @@ from django.shortcuts import render
 from parag.constants import VIP_USERS
 
 
-def index(request):
-
-    user = request.user
-    context = {'user': user,
-               'navbar_selected': 'home',
-               'vip_users': VIP_USERS,
-               }
-
-    return render(request, 'patients/main.html', context)
-
-
-def statistics(request):
-    return render(request, 'patients/statistics.html')
-
-def help(request):
-    return render(request, 'patients/help.html')
-
-def contacts(request):
-    return render(request, 'patients/contacts.html')
-
-
-# class views
 class BaseView(TemplateView):
+    pass
 
-    template_name = 'main.html'
+class MainView(BaseView):
+    template_name = 'patients/main.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['user'] = request.user
+class StatisticsView(BaseView):
+    template_name = 'patients/statistics.html'
 
+class HelpView(BaseView):
+    template_name = 'patients/help.html'
 
-        return
+class ContactsView(BaseView):
+    template_name = 'patients/contacts.html'
+
 
