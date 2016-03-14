@@ -1,0 +1,63 @@
+{% csrf_token %}
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" type="text/css" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+
+<body>
+
+    <section id="body" class="width">
+        <aside id="sidebar" class="column-left">
+
+			<header>
+				<h1><a href="#">{% block header %}{% endblock %}</a></h1>
+				<h2>{% block welcome_message %}{% endblock %}</h2>
+			</header>
+
+			<nav id="mainnav">
+  				<ul>
+                    <li {% if navbar_selected == 'home' %}class="selected-item"{% endif %}>
+                        <a href="{% url 'main' %}">Home</a>
+                    </li>
+
+                    <li {% if navbar_selected == 'admin' %}class="selected-item"{% endif %}>
+                        <a href="{% block admin_url %}{% endblock %}">Inserisci</a>
+                    </li>
+
+                     <li {% if navbar_selected == 'statistics' %}class="selected-item"{% endif %}>
+                         <a href="{% block statistics_url %}{% endblock %}">Statistiche</a>
+                     </li>
+
+                    <li {% if navbar_selected == 'help' %}class="selected-item"{% endif %}>
+                        <a href="{% block help_url %}{% endblock %}">Aiuto</a>
+                    </li>
+
+                    <li {% if navbar_selected == 'contacts' %}class="selected-item"{% endif %}>
+                        <a href="{% block contact_url %}{% endblock %}">Contatti</a>
+                    </li>
+                </ul>
+			</nav>
+		</aside>
+
+    	<section id="content" class="column-right">
+
+        {% block content %}{% endblock %}
+
+        <footer class="clear">
+            <p>{% block footer %}{% endblock %}</p>
+        </footer>
+
+		</section>
+
+		<div class="clear"></div>
+
+	</section>
+	
+</body>
+
+</html>

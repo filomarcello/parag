@@ -7,12 +7,23 @@
 
 {% block header %}Parag{% endblock %}
 
-<!-- TODO correct user nickname -->
-{% block welcome_message %}Benvenuto, {{ user.nickname }} {% endblock %}
+{% block welcome_message %}Benvenuto, {{ user.username }} {% endblock %}
 
-{% block admin_url %}{% endblock %}
+{# check if user is VIP --> to be sent to admin, else to centersadmin #}
+{% block admin_url %}
 
-<!-- TODO navigation links -->
+    {%  if user.username in vip_users %}
+        /admin/
+    {% else %}
+        /centersadmin/
+    {% endif %}
+
+{% endblock %}
+
+
+{% block statistics_url %}/statistics/{% endblock %}
+{% block help_url %}/help/{% endblock %}
+{% block contact_url %}/contacts{% endblock %}
 
 {% block content %}{% endblock %}
 
