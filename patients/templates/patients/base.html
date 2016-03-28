@@ -40,6 +40,11 @@
                     <li {% if navbar_selected == 'contacts' %}class="selected-item"{% endif %}>
                         <a href="{% block contact_url %}{% endblock %}">Contatti</a>
                     </li>
+
+                    <li> {% if navbar_selected == 'logout' %}class="selected-item"{% endif %}>
+                        <a href="{% block logout_url %}{% endblock %}">Esci</a>
+                    </li>
+
                 </ul>
 			</nav>
 		</aside>

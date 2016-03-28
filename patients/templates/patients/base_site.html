@@ -12,7 +12,7 @@
 {# check if user is VIP --> to be sent to admin, else to centersadmin #}
 {% block admin_url %}
 
-    {%  if user.username in vip_users %}
+    {%  if user.username == 'marcello' or user.username == 'uberta' or user.username == 'francesca' %}
         /admin/
     {% else %}
         /centersadmin/
@@ -20,10 +20,19 @@
 
 {% endblock %}
 
-
 {% block statistics_url %}/statistics/{% endblock %}
 {% block help_url %}/help/{% endblock %}
 {% block contact_url %}/contacts{% endblock %}
+
+{% block logout_url %}
+
+    {%  if user.username == 'marcello' or user.username == 'uberta' or user.username == 'francesca' %}
+        /admin/logout
+    {% else %}
+        /centersadmin/logout
+    {% endif %}
+
+{% endblock %}
 
 {% block content %}{% endblock %}
 
