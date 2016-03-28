@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 from parag.admin import centersadmin
 
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'^', include('patients.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^centersadmin/', centersadmin.urls),
+    url(r'^accounts/login/$', auth_views.login),
 ]

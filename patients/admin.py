@@ -100,6 +100,14 @@ class CentersAdmin(admin.ModelAdmin):
                'sdhd', 'sdhd_risultati', 'sdhd_tipo',
                'genetica_note',)
 
+    def get_queryset(self, request):
+        qs = super(CentersAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        else:
+            return qs.filter(centro=request.user.username)
+
+
 
 admin.site.register(Patient, StaffAdmin)
 centersadmin.register(Patient, CentersAdmin)

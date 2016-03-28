@@ -7,7 +7,10 @@ from parag.constants import VIP_USERS
 
 
 class BaseView(TemplateView):
-    pass
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(BaseView, self).dispatch(request, *args, **kwargs)
 
 class MainView(BaseView):
     template_name = 'patients/main.html'
