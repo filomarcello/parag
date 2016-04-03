@@ -21,7 +21,9 @@ from parag.admin import centersadmin
 
 urlpatterns = [
     url(r'^', include('patients.urls')),
+    url(r'^logout', auth_views.logout, {'next_page': '/main/'}),
+    url(r'^', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^centersadmin/', centersadmin.urls),
-    url(r'^accounts/login/$', auth_views.login),
+    # url(r'^accounts/login/$', auth_views.login),
 ]

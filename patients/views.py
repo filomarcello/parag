@@ -1,11 +1,15 @@
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
+from django.contrib.auth import logout
 
 
-class BaseView(TemplateView):
+class BaseView(LoginRequiredMixin, TemplateView):
 
-    @method_decorator(staff_member_required)
+    login_url = '/login/'
+
     def dispatch(self, *args, **kwargs):
         return super(BaseView, self).dispatch(*args, **kwargs)
 
@@ -20,5 +24,8 @@ class HelpView(BaseView):
 
 class ContactsView(BaseView):
     template_name = 'patients/contacts.html'
+
+class LogoutView(BaseView):
+    pass
 
 

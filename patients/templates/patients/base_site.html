@@ -25,12 +25,13 @@
 {% block contact_url %}/contacts{% endblock %}
 
 {% block logout_url %}
+/logout
 
-    {%  if user.username == 'marcello' or user.username == 'uberta' or user.username == 'francesca' %}
-        /admin/logout
-    {% else %}
-        /centersadmin/logout
-    {% endif %}
+{#    {%  if user.username == 'marcello' or user.username == 'uberta' or user.username == 'francesca' %}#}
+{#        /admin/logout#}
+{#    {% else %}#}
+{#        /centersadmin/logout#}
+{#    {% endif %} #}
 
 {% endblock %}
 
