@@ -1,10 +1,7 @@
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
-from django.contrib.auth import logout
 
+from patients.models import Patient
 
 class BaseView(LoginRequiredMixin, TemplateView):
 
@@ -18,6 +15,17 @@ class MainView(BaseView):
 
 class StatisticsView(BaseView):
     template_name = 'patients/statistics.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(StatisticsView, self).get_context_data(**kwargs)
+        # TODO: get values for charts
+        queryset = Patient.objects.all()
+
+        context['n_mal'] = len(queryset.filter(sesso='M'))
+        context['n_fem'] = len(queryset.filter(sesso='F'))
+
+
+        return context
 
 class HelpView(BaseView):
     template_name = 'patients/help.html'
