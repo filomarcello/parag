@@ -6,15 +6,16 @@
 
     <script type="text/javascript">
         // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages':['corechart']});
+        google.charts.load('current', {'packages':['corechart']})
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+        // Set a callbacks to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChartSex);
+        google.charts.setOnLoadCallback(drawChartAge);
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
-        function drawChart() {
+        function drawChartSex() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -34,6 +35,25 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
         }
+
+        function drawChartAge() {
+
+            var data = google.visualization.arrayToDataTable([
+                    ['id', 'Età']
+                {% for k, a in ages %}, [ "{{ k }}", {{ a }} ] {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Età alla diagnosi',
+                legend: { position: 'none' },
+                width: 400,
+                height: 300,
+            };
+
+            var chart = new google.visualization.Histogram(document.getElementById('age_div'));
+            chart.draw(data, options);
+        }
+
     </script>
 
 {% endblock %}
@@ -56,6 +76,7 @@
             </p>
 
             <div id="chart_div"></div>
+            <div id="age_div"></div>
 
 
 		<a href="#" class="button">Read more</a>

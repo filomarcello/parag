@@ -21,8 +21,12 @@ class StatisticsView(BaseView):
         # TODO: get values for charts
         queryset = Patient.objects.all()
 
+        # for Sex pie chart
         context['n_mal'] = len(queryset.filter(sesso='M'))
         context['n_fem'] = len(queryset.filter(sesso='F'))
+
+        # for Age histograms chart
+        context['ages'] = [(p.pk, p.eta_diagnosi) for p in queryset]
 
 
         return context
